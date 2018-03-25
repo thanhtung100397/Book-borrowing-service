@@ -43,6 +43,7 @@ public class BorrowerController {
     @ApiOperation(value = "Borrow books", response = Iterable.class)
     @ApiResponses({
             @ApiResponse(code = 201, message = "Borrow books success"),
+            @ApiResponse(code = 400, message = "Borrow quantity must be greater than 0"),
             @ApiResponse(code = 403, message = "Borrow quantity is greater than available book quantity, cannot borrow"),
             @ApiResponse(code = 404, message = "Book with given id not found")
     })
@@ -50,6 +51,9 @@ public class BorrowerController {
     public ResponseEntity borrowBook(@PathVariable("id") String bookID,
                                      @PathVariable("quantity") int quantity) {
         try {
+            if(quantity <= 0) {
+                return new ResponseEntity(HttpStatus.BAD_REQUEST);
+            }
             Book bookFound = bookRepository.findFirstById(bookID);
             if (bookFound == null) {
                 return new ResponseEntity(HttpStatus.NOT_FOUND);
@@ -70,7 +74,6 @@ public class BorrowerController {
 
             return new ResponseEntity(HttpStatus.CREATED);
         } catch (Exception e) {
-            e.printStackTrace();
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

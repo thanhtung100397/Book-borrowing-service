@@ -1,7 +1,6 @@
 package com.kthdv.book_borrowing.controller;
 
 import com.kthdv.book_borrowing.dao.BookRepository;
-import com.kthdv.book_borrowing.model.data.Book;
 import com.kthdv.book_borrowing.model.view_model.BookDetail;
 import com.kthdv.book_borrowing.model.view_model.BookPreview;
 import io.swagger.annotations.Api;
@@ -45,7 +44,7 @@ public class BookController {
     public ResponseEntity<BookDetail> getBookDetail(@PathVariable("id") String bookID) {
         try {
             BookDetail bookDetailFound = bookRepository.getBookDetail(bookID);
-            if(bookDetailFound == null) {
+            if (bookDetailFound == null) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
             return new ResponseEntity<>(bookDetailFound, HttpStatus.OK);
