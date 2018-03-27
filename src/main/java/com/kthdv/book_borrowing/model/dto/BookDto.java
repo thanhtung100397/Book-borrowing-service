@@ -15,7 +15,6 @@ public class BookDto {
     @NotEmpty
     private String author;
     @ApiModelProperty(notes = "book's description, NOT NULL, NOT EMPTY", position = 2)
-    @NotEmpty
     private String description;
     @ApiModelProperty(notes = "book's quantity, MUST BE GREATER THAN 1", position = 3)
     @Min(1)
