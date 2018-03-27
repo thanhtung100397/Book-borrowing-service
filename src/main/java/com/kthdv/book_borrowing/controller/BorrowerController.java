@@ -72,7 +72,7 @@ public class BorrowerController {
             BorrowedBook borrowedBook = new BorrowedBook(bookFound, quantity);
             borrowedBookRepository.save(borrowedBook);
 
-            return new ResponseEntity(HttpStatus.CREATED);
+            return new ResponseEntity(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }

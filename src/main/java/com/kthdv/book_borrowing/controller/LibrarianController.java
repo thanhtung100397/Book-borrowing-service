@@ -52,7 +52,7 @@ public class LibrarianController {
             }
             bookFound.update(bookDto);
             bookRepository.save(bookFound);
-            return new ResponseEntity(HttpStatus.CREATED);
+            return new ResponseEntity(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -70,7 +70,7 @@ public class LibrarianController {
                 return new ResponseEntity(HttpStatus.NOT_FOUND);
             }
             bookRepository.deleteById(bookID);
-            return new ResponseEntity(HttpStatus.CREATED);
+            return new ResponseEntity(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
