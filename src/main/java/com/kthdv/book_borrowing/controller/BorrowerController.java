@@ -42,7 +42,7 @@ public class BorrowerController {
 
     @ApiOperation(value = "Borrow books", response = Iterable.class)
     @ApiResponses({
-            @ApiResponse(code = 201, message = "Borrow books success"),
+            @ApiResponse(code = 200, message = "Borrow books success"),
             @ApiResponse(code = 400, message = "Borrow quantity must be greater than 0"),
             @ApiResponse(code = 403, message = "Borrow quantity is greater than available book quantity, cannot borrow"),
             @ApiResponse(code = 404, message = "Book with given id not found")
